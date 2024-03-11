@@ -13,6 +13,7 @@ interface MovieDao{
  @Query("SELECT * FROM MovieEntity WHERE id=:id")
  suspend fun getMovieById(id:Int):MovieEntity
 
+ 
     @Query("SELECT * FROM MovieEntity WHERE category=:category")
     suspend fun getMovieListByCategeory(category:String):List<MovieEntity>
 }
