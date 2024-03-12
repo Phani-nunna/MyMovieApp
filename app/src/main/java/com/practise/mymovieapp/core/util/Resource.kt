@@ -1,4 +1,4 @@
-package com.practise.mymovieapp.moviesList.util
+package com.practise.mymovieapp.core.util
 
 sealed class Resource<T>(
     val data: T? = null,

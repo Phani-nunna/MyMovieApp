@@ -1,8 +1,8 @@
-package com.practise.mymovieapp.moviesList.data.mappers
+package com.practise.mymovieapp.details.data.mappers
 
 import com.practise.mymovieapp.core.database.MovieEntity
+import com.practise.mymovieapp.details.domain.model.Movie
 import com.practise.mymovieapp.moviesList.data.remote.response.MovieDto
-import com.practise.mymovieapp.moviesList.domain.model.Movie
 
 fun MovieEntity.toMovie(
     category: String
@@ -21,9 +21,7 @@ fun MovieEntity.toMovie(
         id = id,
         adult = adult,
         original_title = original_title,
-
         category = category,
-
         genre_ids = try {
             genre_ids.split(",").map { it.toInt() }
         } catch (e: Exception) {
@@ -49,9 +47,7 @@ fun MovieDto.toMovieEntity(
         id = id ?: -1,
         original_title = original_title ?: "",
         video = video ?: false,
-
         category = category,
-
         genre_ids = try {
             genre_ids?.joinToString(",") ?: "-1,-2"
         } catch (e: Exception) {

@@ -30,7 +30,6 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -39,8 +38,8 @@ import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
 import com.practise.mymovieapp.R
+import com.practise.mymovieapp.core.util.RatingBar
 import com.practise.mymovieapp.moviesList.data.remote.MovieApi
-import com.practise.mymovieapp.moviesList.util.RatingBar
 
 @Composable
 fun DetailsScreen() {
@@ -83,8 +82,8 @@ fun DetailsScreen() {
             Image(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(6.dp)
-                    .height(250.dp),
+                    .padding(dimensionResource(id = R.dimen.dp_6))
+                    .height(dimensionResource(id = R.dimen.dp_250)),
                 painter = backDropImageState.painter,
                 contentDescription = detailsState.movie?.title,
                 contentScale = ContentScale.Crop
@@ -137,7 +136,6 @@ fun DetailsScreen() {
                         fontSize = 19.sp,
                         fontWeight = FontWeight.SemiBold
                     )
-                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_16)))
                     Row(
                         modifier = Modifier
                             .padding(dimensionResource(id = R.dimen.dp_16))
@@ -156,7 +154,6 @@ fun DetailsScreen() {
                         )
 
                     }
-                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_12)))
                     Text(
                         modifier = Modifier.padding(start = dimensionResource(id = R.dimen.dp_16)),
                         text = stringResource(R.string.language) + movie.original_language
@@ -168,7 +165,7 @@ fun DetailsScreen() {
                     )
                     Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_10)))
                     Text(
-                        modifier = Modifier.padding(start = dimensionResource(id = R.dimen.dp_10)),
+                        modifier = Modifier.padding(start = dimensionResource(id = R.dimen.dp_16)),
 
                         text = movie.vote_count.toString() + stringResource(R.string.votes)
                     )
@@ -184,7 +181,6 @@ fun DetailsScreen() {
             fontSize = 19.sp,
             fontWeight = FontWeight.SemiBold
         )
-        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_8)))
         detailsState.movie?.let {
             Text(
                 modifier = Modifier.padding(start = dimensionResource(id = R.dimen.dp_16)),

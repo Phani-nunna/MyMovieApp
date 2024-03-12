@@ -1,4 +1,4 @@
-package com.practise.mymovieapp.moviesList.util
+package com.practise.mymovieapp.core.util
 
 import android.graphics.Bitmap
 import androidx.compose.runtime.Composable

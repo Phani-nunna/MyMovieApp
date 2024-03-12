@@ -3,8 +3,8 @@ package com.practise.mymovieapp.details.presentation
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.practise.mymovieapp.moviesList.domain.repository.MovieListRepository
-import com.practise.mymovieapp.moviesList.util.Resource
+import com.practise.mymovieapp.core.util.Resource
+import com.practise.mymovieapp.details.domain.repository.MovieDetailsRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
-    private val movieListRepository: MovieListRepository,
+    private val movieDetailsRepository: MovieDetailsRepository,
     private val savedStateHandler: SavedStateHandle
 ) : ViewModel() {
 
@@ -32,7 +32,7 @@ class DetailsViewModel @Inject constructor(
             _detailsState.update {
                 it.copy(isLoading = true)
             }
-            movieListRepository.getMovie(id).collectLatest { result ->
+            movieDetailsRepository.getMovie(id).collectLatest { result ->
                 when (result) {
                     is Resource.Error -> {
                         _detailsState.update {

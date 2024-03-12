@@ -1,4 +1,4 @@
-package com.practise.mymovieapp.core.presentation
+package com.practise.mymovieapp.core.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -16,8 +16,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.practise.mymovieapp.core.util.Screen
 import com.practise.mymovieapp.details.presentation.DetailsScreen
-import com.practise.mymovieapp.moviesList.util.Screen
 import com.practise.mymovieapp.ui.theme.MyMovieAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -41,7 +41,8 @@ class MainActivity : ComponentActivity() {
                         composable(Screen.Home.rout) {
                             HomeScreen(navController)
                         }
-                        composable(Screen.Details.rout + "/{movieId}",
+                        composable(
+                            Screen.Details.rout + "/{movieId}",
                             arguments = listOf(
                                 navArgument("movieId") { type = NavType.IntType }
                             )

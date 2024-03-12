@@ -1,4 +1,4 @@
-package com.practise.mymovieapp.moviesList.util
+package com.practise.mymovieapp.core.util
 
 import androidx.compose.foundation.layout.Row
 import androidx.compose.material.icons.Icons

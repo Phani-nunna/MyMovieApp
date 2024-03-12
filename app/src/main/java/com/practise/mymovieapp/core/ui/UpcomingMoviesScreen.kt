@@ -1,4 +1,4 @@
-package com.practise.mymovieapp.core.presentation
+package com.practise.mymovieapp.core.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -14,10 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.dimensionResource
 import androidx.navigation.NavHostController
 import com.practise.mymovieapp.R
-import com.practise.mymovieapp.core.presentation.components.MovieItem
+import com.practise.mymovieapp.core.ui.components.MovieItem
+import com.practise.mymovieapp.core.util.Category
 import com.practise.mymovieapp.moviesList.presentation.MovieListState
 import com.practise.mymovieapp.moviesList.presentation.MovieListUiEvent
-import com.practise.mymovieapp.moviesList.util.Category
 
 @Composable
 fun UpcomingMoviesScreen(

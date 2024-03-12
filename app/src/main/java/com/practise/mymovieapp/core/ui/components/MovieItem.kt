@@ -1,4 +1,4 @@
-package com.practise.mymovieapp.core.presentation.components
+package com.practise.mymovieapp.core.ui.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -43,9 +43,9 @@ import coil.size.Size
 import com.practise.mymovieapp.R
 import com.practise.mymovieapp.moviesList.data.remote.MovieApi
 import com.practise.mymovieapp.moviesList.domain.model.Movie
-import com.practise.mymovieapp.moviesList.util.RatingBar
-import com.practise.mymovieapp.moviesList.util.Screen
-import com.practise.mymovieapp.moviesList.util.getAverageColor
+import com.practise.mymovieapp.core.util.RatingBar
+import com.practise.mymovieapp.core.util.Screen
+import com.practise.mymovieapp.core.util.getAverageColor
 
 @Composable
 fun MovieItem(

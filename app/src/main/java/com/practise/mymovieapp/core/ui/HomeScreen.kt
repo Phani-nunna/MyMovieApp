@@ -1,4 +1,4 @@
-package com.practise.mymovieapp.core.presentation
+package com.practise.mymovieapp.core.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -18,7 +18,6 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
@@ -36,7 +35,7 @@ import androidx.navigation.compose.rememberNavController
 import com.practise.mymovieapp.R
 import com.practise.mymovieapp.moviesList.presentation.MovieListUiEvent
 import com.practise.mymovieapp.moviesList.presentation.MovieListViewModel
-import com.practise.mymovieapp.moviesList.util.Screen
+import com.practise.mymovieapp.core.util.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

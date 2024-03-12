@@ -2,7 +2,7 @@ package com.practise.mymovieapp.di
 
 import android.app.Application
 import androidx.room.Room
-import com.practise.mymovieapp.moviesList.data.local.movie.MovieDatabase
+import com.practise.mymovieapp.core.database.MovieDatabase
 import com.practise.mymovieapp.moviesList.data.remote.MovieApi
 import dagger.Module
 import dagger.Provides

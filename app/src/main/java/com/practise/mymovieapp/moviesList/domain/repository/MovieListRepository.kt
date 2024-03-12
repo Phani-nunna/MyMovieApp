@@ -1,7 +1,7 @@
 package com.practise.mymovieapp.moviesList.domain.repository
 
+import com.practise.mymovieapp.core.util.Resource
 import com.practise.mymovieapp.moviesList.domain.model.Movie
-import com.practise.mymovieapp.moviesList.util.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface MovieListRepository {
@@ -11,5 +11,5 @@ interface MovieListRepository {
         page: Int
     ): Flow<Resource<List<Movie>>>
 
-    suspend fun getMovie(id: Int): Flow<Resource<Movie>>
+
 }

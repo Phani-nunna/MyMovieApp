@@ -2,9 +2,9 @@ package com.practise.mymovieapp.moviesList.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.practise.mymovieapp.core.util.Category
+import com.practise.mymovieapp.core.util.Resource
 import com.practise.mymovieapp.moviesList.domain.repository.MovieListRepository
-import com.practise.mymovieapp.moviesList.util.Category
-import com.practise.mymovieapp.moviesList.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -99,7 +99,7 @@ class MovieListViewModel @Inject constructor(
         viewModelScope.launch {
             movieListRepository.getMovieList(
                 forceFetchFromRemote,
-                Category.POPULAR,
+                Category.UPCOMING,
                 movieListState.value.upcomingMovieListPage
             ).collectLatest { result ->
                 when (result) {
