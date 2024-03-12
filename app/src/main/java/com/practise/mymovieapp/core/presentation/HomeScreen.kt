@@ -24,8 +24,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
@@ -61,14 +61,14 @@ fun HomeScreen(navController: NavHostController) {
                         fontSize = 20.sp
                     )
                 },
-                modifier = Modifier.shadow(2.dp),
+                modifier = Modifier.shadow(dimensionResource(id = R.dimen.dp_2)),
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.inverseOnSurface,
                     titleContentColor = MaterialTheme.colorScheme.onBackground,
                     navigationIconContentColor = MaterialTheme.colorScheme.inverseOnSurface,
                     actionIconContentColor = MaterialTheme.colorScheme.inverseOnSurface
                 ),
-                )
+            )
         }
     ) {
         Box(

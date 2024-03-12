@@ -32,7 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.unit.sp
 import androidx.core.graphics.drawable.toBitmap
 import androidx.navigation.NavHostController
@@ -40,6 +40,7 @@ import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
+import com.practise.mymovieapp.R
 import com.practise.mymovieapp.moviesList.data.remote.MovieApi
 import com.practise.mymovieapp.moviesList.domain.model.Movie
 import com.practise.mymovieapp.moviesList.util.RatingBar
@@ -64,9 +65,9 @@ fun MovieItem(
     Column(
         modifier = Modifier
             .wrapContentHeight()
-            .width(200.dp)
-            .padding(8.dp)
-            .clip(RoundedCornerShape(28.dp))
+            .width(dimensionResource(id = R.dimen.dp_200))
+            .padding(dimensionResource(id = R.dimen.dp_8))
+            .clip(RoundedCornerShape(dimensionResource(id = R.dimen.dp_28)))
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
@@ -85,14 +86,14 @@ fun MovieItem(
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(6.dp)
-                    .height(250.dp)
-                    .clip(RoundedCornerShape(22.dp))
+                    .padding(dimensionResource(id = R.dimen.dp_6))
+                    .height(dimensionResource(id = R.dimen.dp_250))
+                    .clip(RoundedCornerShape(dimensionResource(id = R.dimen.dp_22)))
                     .background(MaterialTheme.colorScheme.primaryContainer),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
-                    modifier = Modifier.size(70.dp),
+                    modifier = Modifier.size(dimensionResource(id = R.dimen.dp_70)),
                     imageVector = Icons.Rounded.ImageNotSupported,
                     contentDescription = movie.title
                 )
@@ -105,18 +106,21 @@ fun MovieItem(
             Image(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(6.dp)
-                    .height(250.dp)
-                    .clip(RoundedCornerShape(22.dp)),
+                    .padding(dimensionResource(id = R.dimen.dp_6))
+                    .height(dimensionResource(id = R.dimen.dp_250))
+                    .clip(RoundedCornerShape(dimensionResource(id = R.dimen.dp_22))),
                 painter = imageState.painter,
                 contentDescription = movie.title,
                 contentScale = ContentScale.Crop
             )
         }
-        Spacer(modifier = Modifier.height(6.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_6)))
         Text(
             modifier = Modifier
-                .padding(start = 16.dp, end = 8.dp),
+                .padding(
+                    start = dimensionResource(id = R.dimen.dp_16),
+                    end = dimensionResource(id = R.dimen.dp_8)
+                ),
             text = movie.title,
             color = Color.White,
             fontSize = 15.sp,
@@ -125,15 +129,19 @@ fun MovieItem(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(start = 16.dp, bottom = 12.dp, top = 4.dp)
+                .padding(
+                    start = dimensionResource(id = R.dimen.dp_16),
+                    bottom = dimensionResource(id = R.dimen.dp_12),
+                    top = dimensionResource(id = R.dimen.dp_4)
+                )
         ) {
             RatingBar(
-                starsModifier = Modifier.size(18.dp),
+                starsModifier = Modifier.size(dimensionResource(id = R.dimen.dp_18)),
                 rating = movie.vote_average / 2
             )
             Text(
                 modifier = Modifier
-                    .padding(start = 4.dp),
+                    .padding(start = dimensionResource(id = R.dimen.dp_4)),
                 text = movie.vote_average.toString().take(3),
                 color = Color.LightGray,
                 fontSize = 14.sp,

@@ -11,8 +11,9 @@ import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.dimensionResource
 import androidx.navigation.NavHostController
+import com.practise.mymovieapp.R
 import com.practise.mymovieapp.core.presentation.components.MovieItem
 import com.practise.mymovieapp.moviesList.presentation.MovieListState
 import com.practise.mymovieapp.moviesList.presentation.MovieListUiEvent
@@ -35,7 +36,10 @@ fun UpcomingMoviesScreen(
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
             modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(vertical = 8.dp, horizontal = 4.dp)
+            contentPadding = PaddingValues(
+                vertical = dimensionResource(id = R.dimen.dp_8),
+                horizontal = dimensionResource(id = R.dimen.dp_4)
+            )
 
         ) {
             items(movieListState.upcomingMovieList.size) { index ->
@@ -43,7 +47,7 @@ fun UpcomingMoviesScreen(
                     movie = movieListState.upcomingMovieList[index],
                     navHostController = navHostController
                 )
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_16)))
                 if (index >= movieListState.upcomingMovieList.size - 1 && !movieListState.isLoading) {
                     onEvent(MovieListUiEvent.Paginate(Category.UPCOMING))
                 }

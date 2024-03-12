@@ -28,6 +28,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -67,12 +68,12 @@ fun DetailsScreen() {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(220.dp)
+                    .height(dimensionResource(id = R.dimen.dp_220))
                     .background(MaterialTheme.colorScheme.primaryContainer),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
-                    modifier = Modifier.size(70.dp),
+                    modifier = Modifier.size(dimensionResource(id = R.dimen.dp_70)),
                     imageVector = Icons.Rounded.ImageNotSupported,
                     contentDescription = detailsState.movie?.title
                 )
@@ -89,27 +90,27 @@ fun DetailsScreen() {
                 contentScale = ContentScale.Crop
             )
         }
-        Spacer(modifier = Modifier.height(16.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_16)))
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(dimensionResource(id = R.dimen.dp_16))
         ) {
             Box(
                 modifier = Modifier
-                    .width(160.dp)
-                    .height(240.dp)
+                    .width(dimensionResource(id = R.dimen.dp_160))
+                    .height(dimensionResource(id = R.dimen.dp_240))
             ) {
                 if (posterImageState is AsyncImagePainter.State.Error) {
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
-                            .clip(RoundedCornerShape(12.dp))
+                            .clip(RoundedCornerShape(dimensionResource(id = R.dimen.dp_12)))
                             .background(MaterialTheme.colorScheme.primaryContainer),
                         contentAlignment = Alignment.Center
                     ) {
                         Icon(
-                            modifier = Modifier.size(70.dp),
+                            modifier = Modifier.size(dimensionResource(id = R.dimen.dp_70)),
                             imageVector = Icons.Rounded.ImageNotSupported,
                             contentDescription = detailsState.movie?.title
                         )
@@ -119,7 +120,7 @@ fun DetailsScreen() {
                     Image(
                         modifier = Modifier
                             .fillMaxSize()
-                            .clip(RoundedCornerShape(12.dp)),
+                            .clip(RoundedCornerShape(dimensionResource(id = R.dimen.dp_12))),
                         painter = posterImageState.painter,
                         contentDescription = detailsState.movie?.title,
                         contentScale = ContentScale.Crop
@@ -131,23 +132,23 @@ fun DetailsScreen() {
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
-                        modifier = Modifier.padding(start = 10.dp),
+                        modifier = Modifier.padding(start = dimensionResource(id = R.dimen.dp_10)),
                         text = movie.title,
                         fontSize = 19.sp,
                         fontWeight = FontWeight.SemiBold
                     )
-                    Spacer(modifier = Modifier.height(16.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_16)))
                     Row(
                         modifier = Modifier
-                            .padding(start = 16.dp)
+                            .padding(dimensionResource(id = R.dimen.dp_16))
                     ) {
                         RatingBar(
-                            starsModifier = Modifier.size(18.dp),
+                            starsModifier = Modifier.size(dimensionResource(id = R.dimen.dp_18)),
                             rating = movie.vote_average / 2
                         )
                         Text(
                             modifier = Modifier
-                                .padding(start = 4.dp),
+                                .padding(start = dimensionResource(id = R.dimen.dp_4)),
                             text = movie.vote_average.toString().take(3),
                             color = Color.LightGray,
                             fontSize = 14.sp,
@@ -155,19 +156,19 @@ fun DetailsScreen() {
                         )
 
                     }
-                    Spacer(modifier = Modifier.height(12.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_12)))
                     Text(
-                        modifier = Modifier.padding(start = 16.dp),
+                        modifier = Modifier.padding(start = dimensionResource(id = R.dimen.dp_16)),
                         text = stringResource(R.string.language) + movie.original_language
                     )
-                    Spacer(modifier = Modifier.height(10.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_10)))
                     Text(
-                        modifier = Modifier.padding(start = 16.dp),
+                        modifier = Modifier.padding(start = dimensionResource(id = R.dimen.dp_16)),
                         text = stringResource(R.string.release_date) + movie.release_date
                     )
-                    Spacer(modifier = Modifier.height(10.dp))
+                    Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_10)))
                     Text(
-                        modifier = Modifier.padding(start = 10.dp),
+                        modifier = Modifier.padding(start = dimensionResource(id = R.dimen.dp_10)),
 
                         text = movie.vote_count.toString() + stringResource(R.string.votes)
                     )
@@ -175,22 +176,22 @@ fun DetailsScreen() {
             }
 
         }
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_16)))
 
         Text(
-            modifier = Modifier.padding(start = 16.dp),
+            modifier = Modifier.padding(dimensionResource(id = R.dimen.dp_16)),
             text = stringResource(R.string.overview),
             fontSize = 19.sp,
             fontWeight = FontWeight.SemiBold
         )
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_8)))
         detailsState.movie?.let {
             Text(
-                modifier = Modifier.padding(start = 16.dp),
+                modifier = Modifier.padding(start = dimensionResource(id = R.dimen.dp_16)),
                 text = it.overview,
                 fontSize = 16.sp
             )
         }
-        Spacer(modifier = Modifier.height(32.dp))
+        Spacer(modifier = Modifier.height(dimensionResource(id = R.dimen.dp_32)))
     }
 }
