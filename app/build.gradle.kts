@@ -95,4 +95,6 @@ dependencies {
 
     // system UI Controller
     implementation(libs.accompanist.systemuicontroller)
+
+    implementation(libs.androidx.lifecycle.runtime.compose)
 }
