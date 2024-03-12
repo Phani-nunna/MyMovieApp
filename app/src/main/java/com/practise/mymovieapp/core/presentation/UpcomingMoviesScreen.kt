@@ -49,8 +49,6 @@ fun UpcomingMoviesScreen(
                 }
 
             }
-
         }
-
     }
 }

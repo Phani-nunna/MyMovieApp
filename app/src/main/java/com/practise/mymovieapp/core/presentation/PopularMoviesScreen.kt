@@ -16,35 +16,35 @@ import androidx.navigation.NavHostController
 import com.practise.mymovieapp.core.presentation.components.MovieItem
 import com.practise.mymovieapp.moviesList.presentation.MovieListState
 import com.practise.mymovieapp.moviesList.presentation.MovieListUiEvent
-import com.practise.mymovieapp.moviesList.presentation.MovieListViewModel
 import com.practise.mymovieapp.moviesList.util.Category
 
 @Composable
 fun PopularMovieScreen(
     movieListState: MovieListState,
     navHostController: NavHostController,
-    onEvent:(MovieListUiEvent)-> Unit
+    onEvent: (MovieListUiEvent) -> Unit
 ) {
-    if(movieListState.popularMovieList.isEmpty()){
+    if (movieListState.popularMovieList.isEmpty()) {
         Box(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
-        ){
+        ) {
             CircularProgressIndicator()
         }
-    }else{
+    } else {
         LazyVerticalGrid(
-            columns =GridCells.Fixed(2),
+            columns = GridCells.Fixed(2),
             modifier = Modifier.fillMaxSize(),
             contentPadding = PaddingValues(vertical = 8.dp, horizontal = 4.dp)
 
         ) {
-            items(movieListState.popularMovieList.size){ index->
+            items(movieListState.popularMovieList.size) { index ->
                 MovieItem(
                     movie = movieListState.popularMovieList[index],
-                    navHostController = navHostController )
+                    navHostController = navHostController
+                )
                 Spacer(modifier = Modifier.height(16.dp))
-                if(index>= movieListState.popularMovieList.size-1 && !movieListState.isLoading){
+                if (index >= movieListState.popularMovieList.size - 1 && !movieListState.isLoading) {
                     onEvent(MovieListUiEvent.Paginate(Category.POPULAR))
                 }
 

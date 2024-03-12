@@ -23,12 +23,11 @@ class DetailsViewModel @Inject constructor(
     private val _detailsState = MutableStateFlow(DetailsState())
     val detailsState = _detailsState.asStateFlow()
 
-
     init {
         getMovie(movieId ?: -1)
     }
 
-  private fun getMovie(id: Int) {
+    private fun getMovie(id: Int) {
         viewModelScope.launch {
             _detailsState.update {
                 it.copy(isLoading = true)
@@ -46,7 +45,6 @@ class DetailsViewModel @Inject constructor(
                             _detailsState.update {
                                 it.copy(movie = movie)
                             }
-
                         }
                     }
 

@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MyMovieAppTheme {
-                   SetBarColor(color = MaterialTheme.colorScheme.inverseOnSurface)
+                SetBarColor(color = MaterialTheme.colorScheme.inverseOnSurface)
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -46,7 +46,6 @@ class MainActivity : ComponentActivity() {
                                 navArgument("movieId") { type = NavType.IntType }
                             )
                         ) {
-
                             DetailsScreen()
                         }
                     }
@@ -61,8 +60,6 @@ class MainActivity : ComponentActivity() {
         LaunchedEffect(key1 = color) {
             systemUiController.setSystemBarsColor(color)
         }
-
-
     }
 }
 

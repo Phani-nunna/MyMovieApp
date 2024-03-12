@@ -45,11 +45,10 @@ fun HomeScreen(navController: NavHostController) {
     val bottomNavHostController = rememberNavController()
     Scaffold(
         bottomBar = {
-                    BottomNavigationBar(
-                        bottomNavHostController = bottomNavHostController,
-                        onEvent = movieListViewModel::onEvent
-                    )
-
+            BottomNavigationBar(
+                bottomNavHostController = bottomNavHostController,
+                onEvent = movieListViewModel::onEvent
+            )
         },
         topBar = {
             TopAppBar(
@@ -61,7 +60,6 @@ fun HomeScreen(navController: NavHostController) {
                             stringResource(id = R.string.upcoming_movies),
                         fontSize = 20.sp
                     )
-
                 },
                 modifier = Modifier.shadow(2.dp),
                 colors = TopAppBarDefaults.topAppBarColors(
@@ -70,31 +68,26 @@ fun HomeScreen(navController: NavHostController) {
                     navigationIconContentColor = MaterialTheme.colorScheme.inverseOnSurface,
                     actionIconContentColor = MaterialTheme.colorScheme.inverseOnSurface
                 ),
-
                 )
-
-
-
-
         }
     ) {
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(it)
-        ){
+        ) {
             NavHost(
                 navController = bottomNavHostController,
                 startDestination = Screen.PopularMovieList.rout
-            ){
-                composable(Screen.PopularMovieList.rout){
+            ) {
+                composable(Screen.PopularMovieList.rout) {
                     PopularMovieScreen(
                         movieListState = movieListState,
                         navHostController = navController,
                         onEvent = movieListViewModel::onEvent
                     )
                 }
-                composable(Screen.UpcomingMovieList.rout){
+                composable(Screen.UpcomingMovieList.rout) {
                     UpcomingMoviesScreen(
                         movieListState = movieListState,
                         navHostController = navController,
@@ -115,17 +108,16 @@ fun BottomNavigationBar(
 ) {
     val items = listOf(
         BottomItem(
-            title = stringResource( R.string.popular),
+            title = stringResource(R.string.popular),
             icon = Icons.Rounded.Movie
         ),
         BottomItem(
-            title = stringResource( R.string.upcoming),
+            title = stringResource(R.string.upcoming),
             icon = Icons.Rounded.Upcoming
         )
     )
     val selected = rememberSaveable {
         mutableIntStateOf(0)
-
     }
     NavigationBar {
         Row(
@@ -135,22 +127,22 @@ fun BottomNavigationBar(
                 NavigationBarItem(
                     selected = selected.intValue == index,
                     onClick = {
-                                    selected.intValue = index
-                        when(selected.intValue){
-                            0 ->{
+                        selected.intValue = index
+                        when (selected.intValue) {
+                            0 -> {
                                 onEvent(MovieListUiEvent.Navigate)
                                 bottomNavHostController.popBackStack()
                                 bottomNavHostController.navigate(Screen.PopularMovieList.rout)
                             }
-                            1 ->{
+
+                            1 -> {
                                 onEvent(MovieListUiEvent.Navigate)
                                 bottomNavHostController.popBackStack()
                                 bottomNavHostController.navigate(Screen.UpcomingMovieList.rout)
                             }
-
                         }
 
-                              },
+                    },
                     icon = {
                         Icon(
                             imageVector = bottomItem.icon,
@@ -171,8 +163,6 @@ fun BottomNavigationBar(
         }
 
     }
-
-
 }
 
 data class BottomItem(

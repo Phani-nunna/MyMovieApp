@@ -58,7 +58,7 @@ fun MovieItem(
             .build()
     ).state
     val defaultColor = MaterialTheme.colorScheme.secondaryContainer
-    var dominateColor by remember{
+    var dominateColor by remember {
         mutableStateOf(defaultColor)
     }
     Column(
@@ -81,7 +81,7 @@ fun MovieItem(
             }
 
     ) {
-        if(imageState is AsyncImagePainter.State.Error){
+        if (imageState is AsyncImagePainter.State.Error) {
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -89,7 +89,8 @@ fun MovieItem(
                     .height(250.dp)
                     .clip(RoundedCornerShape(22.dp))
                     .background(MaterialTheme.colorScheme.primaryContainer),
-                    contentAlignment = Alignment.Center){
+                contentAlignment = Alignment.Center
+            ) {
                 Icon(
                     modifier = Modifier.size(70.dp),
                     imageVector = Icons.Rounded.ImageNotSupported,
@@ -97,10 +98,10 @@ fun MovieItem(
                 )
             }
         }
-        if(imageState is AsyncImagePainter.State.Success){
-           dominateColor = getAverageColor(
-               imageBitmap = imageState.result.drawable.toBitmap().asImageBitmap()
-           )
+        if (imageState is AsyncImagePainter.State.Success) {
+            dominateColor = getAverageColor(
+                imageBitmap = imageState.result.drawable.toBitmap().asImageBitmap()
+            )
             Image(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -110,7 +111,7 @@ fun MovieItem(
                 painter = imageState.painter,
                 contentDescription = movie.title,
                 contentScale = ContentScale.Crop
-                )
+            )
         }
         Spacer(modifier = Modifier.height(6.dp))
         Text(
@@ -128,7 +129,7 @@ fun MovieItem(
         ) {
             RatingBar(
                 starsModifier = Modifier.size(18.dp),
-                rating = movie.vote_average/2
+                rating = movie.vote_average / 2
             )
             Text(
                 modifier = Modifier

@@ -66,11 +66,11 @@ class MovieListViewModel @Inject constructor(
                     }
 
                     is Resource.Success -> {
-                        result.data?.let { popularMovieList->
+                        result.data?.let { popularMovieList ->
                             _movieListState.update {
                                 it.copy(
-                                    popularMovieList = movieListState.value.popularMovieList+ popularMovieList.shuffled(),
-                                    popularMovieListPage = movieListState.value.popularMovieListPage+1
+                                    popularMovieList = movieListState.value.popularMovieList + popularMovieList.shuffled(),
+                                    popularMovieListPage = movieListState.value.popularMovieListPage + 1
                                 )
                             }
                         }
@@ -110,11 +110,11 @@ class MovieListViewModel @Inject constructor(
                     }
 
                     is Resource.Success -> {
-                        result.data?.let { upcomingMovieList->
+                        result.data?.let { upcomingMovieList ->
                             _movieListState.update {
                                 it.copy(
-                                    upcomingMovieList = movieListState.value.upcomingMovieList+ upcomingMovieList.shuffled(),
-                                    upcomingMovieListPage = movieListState.value.upcomingMovieListPage+1
+                                    upcomingMovieList = movieListState.value.upcomingMovieList + upcomingMovieList.shuffled(),
+                                    upcomingMovieListPage = movieListState.value.upcomingMovieListPage + 1
                                 )
                             }
                         }

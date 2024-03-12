@@ -40,26 +40,26 @@ class MovieListRepositoryImpl @Inject constructor(
             }
 
             val moviesListFromApi = try {
-                movieApi.getMoviesList(category,page)
-            }catch (e:IOException){
+                movieApi.getMoviesList(category, page)
+            } catch (e: IOException) {
                 e.printStackTrace()
                 emit(Resource.Error("Error loading movies"))
                 return@flow
-            }catch (e: HttpException){
+            } catch (e: HttpException) {
                 e.printStackTrace()
                 emit(Resource.Error("Error loading movies"))
                 return@flow
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 e.printStackTrace()
                 emit(Resource.Error("Error loading movies"))
                 return@flow
             }
 
             val movieEntities = moviesListFromApi.results.let {
-                  it.map { movieDto ->
-                       movieDto.toMovieEntity(category  )
+                it.map { movieDto ->
+                    movieDto.toMovieEntity(category)
 
-                  }
+                }
             }
             movieDatabase.movieDao.upsertMoveList(movieEntities)
             emit(Resource.Success(
@@ -72,18 +72,18 @@ class MovieListRepositoryImpl @Inject constructor(
         }
 
 
-
-
     }
 
     override suspend fun getMovie(id: Int): Flow<Resource<Movie>> {
         return flow {
             emit(Resource.Loading(true))
             val movieEntity = movieDatabase.movieDao.getMovieById(id)
-            if(null != movieEntity){
-                emit(Resource.Success(
-                    movieEntity.toMovie(movieEntity.category)
-                ))
+            if (null != movieEntity) {
+                emit(
+                    Resource.Success(
+                        movieEntity.toMovie(movieEntity.category)
+                    )
+                )
                 emit(Resource.Loading(false))
                 return@flow
             }

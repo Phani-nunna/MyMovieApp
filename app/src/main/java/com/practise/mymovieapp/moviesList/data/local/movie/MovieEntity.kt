@@ -2,6 +2,7 @@ package com.practise.mymovieapp.moviesList.data.local.movie
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+
 @Entity
 data class MovieEntity(
 
