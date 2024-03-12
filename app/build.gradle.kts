@@ -97,4 +97,14 @@ dependencies {
     implementation(libs.accompanist.systemuicontroller)
 
     implementation(libs.androidx.lifecycle.runtime.compose)
+
+    //Mockk
+    testImplementation (libs.mockk)
+    androidTestImplementation (libs.mockk.android)
+
+    testImplementation (libs.kotlinx.coroutines.test)
+    testImplementation (libs.androidx.core.testing)
+    testImplementation (libs.mockk.agent)
+
+
 }
