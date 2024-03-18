@@ -105,6 +105,8 @@ dependencies {
     testImplementation (libs.kotlinx.coroutines.test)
     testImplementation (libs.androidx.core.testing)
     testImplementation (libs.mockk.agent)
+    testImplementation (libs.turbine)
+
 
 
 }

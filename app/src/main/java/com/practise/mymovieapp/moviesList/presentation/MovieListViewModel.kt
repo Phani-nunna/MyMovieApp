@@ -48,7 +48,7 @@ class MovieListViewModel @Inject constructor(
         }
     }
 
-    private fun getPopularMovieList(forceFetchFromRemote: Boolean) {
+    fun getPopularMovieList(forceFetchFromRemote: Boolean) {
         _movieListState.update {
             it.copy(isLoading = true)
         }
@@ -92,7 +92,7 @@ class MovieListViewModel @Inject constructor(
 
     }
 
-    private fun getUpcomingMovieList(forceFetchFromRemote: Boolean) {
+    fun getUpcomingMovieList(forceFetchFromRemote: Boolean) {
         _movieListState.update {
             it.copy(isLoading = true)
         }

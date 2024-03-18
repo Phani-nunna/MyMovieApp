@@ -9,12 +9,14 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.onEmpty
 import javax.inject.Inject
+import javax.inject.Singleton
 
+@Singleton
 class MovieDetailsRepositoryImpl @Inject constructor(
     private val movieDatabase: MovieDatabase
 ) : MovieDetailsRepository {
     override suspend fun getMovie(id: Int): Flow<Resource<Movie>> {
-        return flow {
+        return flow<Resource<Movie>> {
             emit(Resource.Loading(true))
             val movieEntity = movieDatabase.movieDetailDao.getMovieById(id)
             if (null != movieEntity) {
@@ -29,8 +31,9 @@ class MovieDetailsRepositoryImpl @Inject constructor(
             emit(Resource.Error("Error No such movie "))
             emit(Resource.Loading(false))
 
-        }.onEmpty {
-            emit(Resource.Error("Error No such movie "))
+        }
+            .onEmpty {
+            emit(Resource.Error("Error No such movie"))
             emit(Resource.Loading(false))
         }
     }
