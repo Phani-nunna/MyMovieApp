@@ -21,9 +21,7 @@ fun MovieEntity.toMovie(
         id = id,
         adult = adult,
         original_title = original_title,
-
         category = category,
-
         genre_ids = try {
             genre_ids.split(",").map { it.toInt() }
         } catch (e: Exception) {
@@ -49,9 +47,7 @@ fun MovieDto.toMovieEntity(
         id = id ?: -1,
         original_title = original_title ?: "",
         video = video ?: false,
-
         category = category,
-
         genre_ids = try {
             genre_ids?.joinToString(",") ?: "-1,-2"
         } catch (e: Exception) {

@@ -23,17 +23,17 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
 class MovieListViewModelTest {
 
     @get:Rule
     var instantTaskExecutorRule = MockKRule(this)
     private val dispatcher = StandardTestDispatcher()
     private lateinit var viewModel: MovieListViewModel
-    lateinit var movieListRepository: MovieListRepository
+    private lateinit var movieListRepository: MovieListRepository
     private lateinit var observer: Observer<MovieListState>
     private lateinit var movieListState: MovieListState
 
+    @OptIn(ExperimentalCoroutinesApi::class)
     @Before
     fun setUp() {
         Dispatchers.setMain(dispatcher)
@@ -60,9 +60,7 @@ class MovieListViewModelTest {
 
     @After
     fun teardown() {
-        //  Dispatchers.resetMain()
         clearAllMocks()
-
     }
 
     @Test
@@ -74,29 +72,17 @@ class MovieListViewModelTest {
         coEvery { mockedObject.getPopularMovieList(true) } returns Unit
 
         mockedObject.getPopularMovieList(true)
-
-        var res = viewModel.movieListState.test {
-
-            cancelAndIgnoreRemainingEvents()
-
-        }
-
-
         assert(movieListState.popularMovieList.size == 1)
-        assert(movieListState.isLoading == true)
+        assert(movieListState.isLoading)
 
         verify {
             mockedObject.getPopularMovieList(true)
-
         }
-
     }
 
     @Test
     fun `test  fetching Upcoming movie list`() = runTest {
-        //  advanceTimeBy(10_000) // advance time by 10,000ms
         every { movieListState.isLoading } returns true
-        // every { movieListState.popularMovieList } returns listOf(Fake.fake(Category.POPULAR))
         every { movieListState.upcomingMovieList } returns listOf(Fake.fake(Category.UPCOMING))
 
         val mockedObject = mockk<MovieListViewModel>()
@@ -104,21 +90,15 @@ class MovieListViewModelTest {
 
         mockedObject.getUpcomingMovieList(true)
 
-        var res = viewModel.movieListState.test {
-
+        viewModel.movieListState.test {
             cancelAndIgnoreRemainingEvents()
-
         }
-
 
         assert(movieListState.upcomingMovieList.size == 1)
-        assert(movieListState.isLoading == true)
-
+        assert(movieListState.isLoading)
         verify {
             mockedObject.getUpcomingMovieList(true)
-
         }
-
     }
 
 }

@@ -15,8 +15,8 @@ import javax.inject.Singleton
 class MovieDetailsRepositoryImpl @Inject constructor(
     private val movieDatabase: MovieDatabase
 ) : MovieDetailsRepository {
-    override suspend fun getMovie(id: Int): Flow<Resource<Movie>> {
-        return flow<Resource<Movie>> {
+    override  fun getMovie(id: Int): Flow<Resource<Movie>> {
+        return flow {
             emit(Resource.Loading(true))
             val movieEntity = movieDatabase.movieDetailDao.getMovieById(id)
             if (null != movieEntity) {

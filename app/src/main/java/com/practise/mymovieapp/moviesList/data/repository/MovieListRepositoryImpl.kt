@@ -19,7 +19,7 @@ class MovieListRepositoryImpl @Inject constructor(
     private val movieApi: MovieApi,
     private val movieDatabase: MovieDatabase
 ) : MovieListRepository {
-    override suspend fun getMovieList(
+    override fun getMovieList(
         forceFetchFromRemote: Boolean,
         category: String,
         page: Int
@@ -27,7 +27,7 @@ class MovieListRepositoryImpl @Inject constructor(
         return flow {
 
             emit(Resource.Loading(isLoading = true))
-            val localMoviesList = movieDatabase.movieDao.getMovieListByCategeory(category)
+            val localMoviesList = movieDatabase.movieDao.getMovieListByCategory(category)
             val shouldLoadLocalMovie = localMoviesList.isNotEmpty() && !forceFetchFromRemote
             if (shouldLoadLocalMovie) {
                 emit(

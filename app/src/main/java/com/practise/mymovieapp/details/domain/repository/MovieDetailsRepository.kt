@@ -5,5 +5,5 @@ import com.practise.mymovieapp.details.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MovieDetailsRepository {
-    suspend fun getMovie(id: Int): Flow<Resource<Movie>>
+     fun getMovie(id: Int): Flow<Resource<Movie>>
 }

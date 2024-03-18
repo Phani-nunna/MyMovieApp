@@ -16,10 +16,10 @@ import javax.inject.Inject
 @HiltViewModel
 class DetailsViewModel @Inject constructor(
     private val movieDetailsRepository: MovieDetailsRepository,
-    private val savedStateHandler: SavedStateHandle
+    savedStateHandler: SavedStateHandle
 ) : ViewModel() {
 
-    private val movieId = savedStateHandler.get<Int>("movieId")
+    private val movieId: Int? = savedStateHandler.get<Int>("movieId")
     private val _detailsState = MutableStateFlow(DetailsState())
     val detailsState = _detailsState.asStateFlow()
 

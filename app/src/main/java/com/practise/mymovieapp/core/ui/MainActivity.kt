@@ -28,7 +28,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             MyMovieAppTheme {
                 SetBarColor(color = MaterialTheme.colorScheme.inverseOnSurface)
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background

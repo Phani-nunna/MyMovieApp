@@ -7,11 +7,9 @@ import com.practise.mymovieapp.core.database.MovieEntity
 
 @Dao
 interface MovieDao {
-
     @Upsert
     suspend fun upsertMoveList(movieList: List<MovieEntity>)
 
-
     @Query("SELECT * FROM MovieEntity WHERE category=:category")
-    suspend fun getMovieListByCategeory(category: String): List<MovieEntity>
+    suspend fun getMovieListByCategory(category: String): List<MovieEntity>
 }

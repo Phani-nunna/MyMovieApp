@@ -5,8 +5,7 @@ import androidx.room.Query
 import com.practise.mymovieapp.core.database.MovieEntity
 
 @Dao
-interface MovieDetailDao {
-
+fun interface MovieDetailDao {
     @Query("SELECT * FROM MovieEntity WHERE id=:id")
     suspend fun getMovieById(id: Int): MovieEntity
 }

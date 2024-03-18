@@ -4,8 +4,8 @@ import com.practise.mymovieapp.core.util.Resource
 import com.practise.mymovieapp.moviesList.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 
-interface MovieListRepository {
-    suspend fun getMovieList(
+fun interface MovieListRepository {
+     fun getMovieList(
         forceFetchFromRemote: Boolean,
         category: String,
         page: Int

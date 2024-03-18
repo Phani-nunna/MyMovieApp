@@ -24,7 +24,7 @@ class DetailsViewModelTest {
     var instantTaskExecutorRule = MockKRule(this)
     private val dispatcher = StandardTestDispatcher()
     private lateinit var viewModel: DetailsViewModel
-    var movieDetailsRepository: MovieDetailsRepository = mockk(relaxed = true)
+    private var movieDetailsRepository: MovieDetailsRepository = mockk(relaxed = true)
     private lateinit var observer: Observer<DetailsState>
     private lateinit var detailsState: DetailsState
     private lateinit var savedStateHandle: SavedStateHandle
@@ -33,12 +33,9 @@ class DetailsViewModelTest {
     fun start() {
         savedStateHandle = mockk()
         Dispatchers.setMain(dispatcher)
-        //  movieDetailsRepository = mockk()
         detailsState = mockk()
         observer = mockk(relaxed = true)
         every { savedStateHandle.get<Int>("movieId") } returns 12
-
-
         viewModel = DetailsViewModel(movieDetailsRepository, savedStateHandle)
 
     }
@@ -52,15 +49,12 @@ class DetailsViewModelTest {
                 )
             )
         }
-
         val res = movieDetailsRepository.getMovie(12)
         res.collect {
             if (it is Resource.Success) {
                 assert(it.data?.adult == false)
             }
         }
-
-
     }
 
     @Test
@@ -74,7 +68,6 @@ class DetailsViewModelTest {
                 assert(it.message == "Error No such movie")
             }
         }
-
 
     }
 }
